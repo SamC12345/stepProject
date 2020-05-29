@@ -34,7 +34,7 @@
     background: #AED9E0;
     margin: 10px;
     position: relative;
-    min-width: 90%;
+    width: 90%;
     min-height: 80%;
     border-radius: 10px;
     scroll-snap-align: center;
@@ -43,6 +43,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+h3, h2, h1, h4 {
+  color: #5E6472
+}
+
+.title {
+    font-size: 5rem
+}
+
+.vh-40 {
+    height: 40vh
+}
+
 
 .vh-15 {
     height: 15vh
