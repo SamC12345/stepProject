@@ -17,6 +17,9 @@
 		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
 	</script>
 
+    <!-- font awesome CDN -->
+    <script src="https://kit.fontawesome.com/383597ecc1.js" crossorigin="anonymous"></script>
+
 
 	<link rel="stylesheet" href="style.css">
 	<script src="script.js"></script>
@@ -24,12 +27,12 @@
 
 
 <body>
-	<div id="content" class="container bg-dark mw-100 vh-100 p-0 m-0">
-        <div class="h-10">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div id="content" class="container mw-100 vh-100 p-0 m-0">
+        <div class="vh-5">
+            <nav class="navbar navbar-expand-lg navbar h-100">
                 <a class="navbar-brand" href="#">Navbar</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -43,9 +46,6 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#page3">page3</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#page4">page4</a>
-                        </li>
                     </ul>
                 </div>
             </nav>
@@ -53,8 +53,8 @@
 
 		<div class="gallery">
 			<div id="page1" class="slide">
-                <div class="container">
-                    <div class="row vh-15 m-5">
+                <div class="py-4 px-10">
+                    <div class="row vh-15 my-5">
                         <div class="col h-100 text-right">
                             <img src="Sam.jpg" class="img-fluid h-100 rounded-circle" alt="A picture of Me">
                         </div>
@@ -65,11 +65,47 @@
                             </h1>
                         </div>
                     </div>
+                    <div class="row vh-5 mt-5">
+                        <div class="col h-100 text-left d-flex">
+                            <h3 class="my-auto">
+                                I'm a sophomore at NJIT ...
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row vh-10 mb-5">
+                        <div class="col h-100 text-right flex-row-reverse">
+                            <h4 class="my-auto">
+                                I'm majoring in<br/>Computer Science,<br/>Computational Mathematics,<br/>and History
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row vh-5">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h4 class="my-auto">
+                                Connect with me here:
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="row vh-5 mb-5">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.linkedin.com/in/samuel-carlos"><i class="fab fa-linkedin"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://github.com/SamC12345"><i class="fab fa-github-square"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.facebook.com/samtcarlos"><i class="fab fa-facebook-square"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.instagram.com/sam.carlos098/"><i class="fab fa-instagram-square"></i></a>
+                            </h1>
+                        </div>
+                    </div>
                 </div>
             </div>
 			<div id="page2" class="slide"></div>
 			<div id="page3" class="slide"></div>
-			<div id="page4" class="slide"></div>
         </div>
 	</div>
 </body>
