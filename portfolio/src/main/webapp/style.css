@@ -32,3 +32,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.vh-15 {
+    height: 15vh
+}
