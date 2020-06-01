@@ -1,18 +1,229 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1>My Portfolio</h1>
-      <p>This is my portfolio.</p>
-      <p>Click here to get a random message:</p>
-      <button onclick="addRandomGreeting()">Hello</button>
-      <div id="greeting-container"></div>
-    </div>
-  </body>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>My Portfolio</title>
+	<!-- bootstrap CDNs -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+	</script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+
+    <!-- font awesome CDN -->
+    <script src="https://kit.fontawesome.com/383597ecc1.js" crossorigin="anonymous"></script>
+
+
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+
+
+<body>
+	<div id="content" class="container mw-100 vh-100 p-0 m-0">
+        <div class="vh-5">
+            <nav class="navbar navbar-expand-lg navbar h-100">
+                <a class="navbar-brand rounded-circle text-center" href="#page1"><b>SC</b></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#page1">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#page2">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#page3">My Experience</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+		<div class="gallery">
+			<div id="page1" class="slide">
+                <div class="py-4 px-10">
+                    <div class="row vh-40 my-5">
+                        <div class="col h-100 d-flex align-items-center justify-content-end">
+                            <img src="assets/Sam.jpg" class="img-fluid mh-100 rounded-circle" alt="A picture of Me">
+                        </div>
+                        <div class="col h-100 text-left d-flex ">
+                            <h1 class="title my-auto">
+                                Hey There! <br/>
+                                I'm Sam
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row vh-5">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h2 class="my-auto">
+                                Connect with me here:
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row vh-5 mb-5">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.linkedin.com/in/samuel-carlos"><i class="fab fa-linkedin"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://github.com/SamC12345"><i class="fab fa-github-square"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.facebook.com/samtcarlos"><i class="fab fa-facebook-square"></i></a>
+                            </h1>
+                            <h1 class="my-auto mx-3">
+                                <a href="https://www.instagram.com/sam.carlos098/"><i class="fab fa-instagram-square"></i></a>
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row vh-5">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h3 class="my-auto">
+                                And scroll down to learn a bit more about me
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div id="page2" class="slide">
+                <div class="py-4 px-10">
+                    <div class="row vh-5 mt-3 mb-1">
+                        <div class="col h-100 justify-content-center d-flex">
+                            <h2 class="my-auto">
+                                About Me
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row vh-10 my-1">
+                        <div class="col h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="mx-5 text-center">I'm a junior at NJIT majoring in Computer Science, Computational Math, and History.
+                            Those might sounds like an odd mix of majors, but it's a combination of a lot of the things I like!
+                            I really enjoy using CS and Math to solve problems in today's society,
+                            and I'm particularly interested in using technology as an approach to history. Read more about it here: <a href="https://en.wikipedia.org/wiki/Digital_humanities">Digital Humanites</a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row vh-15 my-1">
+                        <div class="col-5 text-right h-100 my-auto">
+                            <figure class="h-100">
+                                <img src="assets/shadow.jpg" class="h-100 rounded img-thumbnail" alt="picture of Shadow">
+                                <figcaption class="text-right"> Shadow the Chinchilla </figcaption>
+                            </figure>
+                        </div>
+                        <div class="col-2 h-100 text-center d-flex flex-column justify-content-center">
+                            <p class="m-0 text-center">I have two pets. They're both really cute! I hope you think so too :)</p>
+                        </div>
+                        <div class="col-5 h-100 my-auto">
+                            <figure class="h-100">
+                                <img src="assets/baby.jpg" class="h-100 rounded img-thumbnail" alt="picture of Baby">
+                                <figcaption class="text-left"> Baby the Rabbit </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                    <div class="row vh-15 mt-5 mb-3">
+                        <div class="col-6 h-100 text-right d-flex flex-column justify-content-center">
+                            <p class="text-right">
+                                I really enjoy watching movies. Before quarantine, I would be watching movies on opening weekend every single week!
+                                Check out this trailer for one of my favorite movies this past year:
+                            </p>
+                        </div>
+                        <div class="col-6 text-left h-100 my-auto">
+                            <iframe src="https://www.youtube.com/embed/gZjQROMAh_s" class="h-100 img-thumbnail" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="row vh-15 mt-2">
+                        <div class="col-6 text-right h-100 my-auto">
+                            <iframe src="https://www.youtube.com/embed/ds0jskRIeRI" class="h-100 img-thumbnail" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="col-6 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="text-left">
+                                One thing I have a lot of fun with is cooking and baking.
+                                I don't claim to be good at it, but it is fun :D
+                                Here's a recipe for some coffee cake I made. (from one of my favorite youtubers btw)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<div id="page3" class="slide">
+                <div class="py-4 px-10">
+                    <div class="row vh-5 mt-5 mb-2">
+                        <div class="col-10 h-100 justify-content-center d-flex">
+                            <h2 class="my-auto">
+                                I have some experience doing stuff! Check it out:
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row vh-10 my-0">
+                        <div class="col-3 text-right my-auto">
+                            <img src="assets/google.png" class="img-fluid" alt="Google logo">
+                        </div>
+                        <div class="col-9 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="m-0">&#9642; I'm working right now at google as a STEP intern!</p>
+                            </div>
+                    </div>
+                    <div class="row vh-10 my-1">
+                        <div class="col-3 text-right my-auto">
+                            <img src="assets/TDAmeritrade.png" class="img-fluid" alt="TD Ameritrade logo">
+                        </div>
+                        <div class="col-9 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="m-0">&#9642; I worked at TD Ameritrade as a Software Engineering Intern on the Digital Workplace team from Jan 2020 - May 2020</p>
+                            <p class="m-0">&#9642; My work involved creating a chatbot using NLP models, Microsoft Azure, and Microsoft's Bot Framework </p>
+                        </div>
+                    </div>
+                    <div class="row vh-10 my-1">
+                        <div class="col-3 text-right my-auto">
+                            <img src="assets/prudential.png" class="img-fluid" alt="Prudential logo">
+                        </div>
+                        <div class="col-9 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="m-0">&#9642; I interned four times at Prudential, once as a web development intern and thrice as a cyber-security intern</p>
+                            <p class="m-0">&#9642; As a web-development intern, I used Spring for Java and Angular 6 to make <a href="https://www.prudential.com">Prudential.com</a> ADA compliant </p>
+                            <p class="m-0">&#9642; During my cyber-security internships, I created web-applications that cyber-security analysts would use to identify which computers and servers are vulnerable to attack</p>
+                        </div>
+                    </div>
+                    <div class="row vh-5 my-2">
+                        <div class="col-10 h-100 justify-content-center d-flex">
+                            <h2 class="my-auto">
+                                And here's some information about my education:
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row vh-10 my-1">
+                        <div class="col-3 text-right my-auto">
+                            <img src="assets/njit.png" class="img-fluid" alt="NJIT logo">
+                        </div>
+                        <div class="col-9 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="m-0">&#9642; In May 2022, I'll be graduating with 2 degrees from NJIT!</p>
+                            <p class="m-0">&#9642; A B.A in History with a minor in Business</p>
+                            <p class="m-0">&#9642; And a B.S. with a double major in Computer Science and Computational Mathematics</p>
+                        </div>
+                    </div>
+                    <div class="row vh-10 my-1">
+                        <div class="col-3 text-right my-auto">
+                            <img src="assets/mcc.png" class="img-fluid" alt="MCC logo">
+                        </div>
+                        <div class="col-9 h-100 text-left d-flex flex-column justify-content-center">
+                            <p class="m-0">&#9642; In June 2018 I got my high school diploma from the Middlesex County Academy</p>
+                            <p class="m-0">&#9642; Through high school, I took evening college classes and got a degree!</p>
+                            <p class="m-0">&#9642; So in December 2017, I received an Associate's Degree in Applied Mathematics from MCC </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+
 </html>

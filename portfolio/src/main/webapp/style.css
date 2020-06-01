@@ -1,9 +1,92 @@
 #content {
   margin-left: auto;
   margin-right: auto;
-  width: 650px;
 }
 
 #greeting-container {
   margin-top: 20px;
+}
+
+.navbar-brand {
+    min-width: 40px;
+    background: #5E6472
+}
+
+.nav-link, .navbar-brand {
+  color: #AED9E0
+}
+
+.nav-link {
+  font-weight: 900;
+}
+
+.navbar, .navbar-collapse {
+    background: #202227
+}
+
+.navbar-collapse {
+    z-index: 99
+}
+
+.show {
+    border-radius: 10px;
+    padding: 10px
+}
+
+.gallery {
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    align-items: center;
+    height: 95%;
+    background: #5E6472
+}
+
+.slide {
+    background: #AED9E0;
+    margin: 10px;
+    position: relative;
+    width: 90%;
+    min-height: 80%;
+    border-radius: 10px;
+    scroll-snap-align: center;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+h3, h2, h1, h4, h5, p {
+  color: #5E6472
+}
+
+.title {
+    font-size: 5rem
+}
+
+.vh-40 {
+    height: 40vh
+}
+
+.vh-20 {
+    height: 20vh
+}
+
+.vh-15 {
+    height: 15vh
+}
+
+.vh-10 {
+    height: 10vh
+}
+
+.vh-5 {
+    height: 5vh
+}
+
+.px-10 {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important
 }
