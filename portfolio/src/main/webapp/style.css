@@ -7,6 +7,11 @@
   margin-top: 20px;
 }
 
+.navbar-brand {
+    min-width: 40px;
+    background: #5E6472
+}
+
 .nav-link, .navbar-brand {
   color: #AED9E0
 }
@@ -15,8 +20,17 @@
   font-weight: 900;
 }
 
-.navbar {
+.navbar, .navbar-collapse {
     background: #202227
+}
+
+.navbar-collapse {
+    z-index: 99
+}
+
+.show {
+    border-radius: 10px;
+    padding: 10px
 }
 
 .gallery {
@@ -44,7 +58,7 @@ html {
   scroll-behavior: smooth;
 }
 
-h3, h2, h1, h4 {
+h3, h2, h1, h4, h5, p {
   color: #5E6472
 }
 
@@ -56,6 +70,9 @@ h3, h2, h1, h4 {
     height: 40vh
 }
 
+.vh-20 {
+    height: 20vh
+}
 
 .vh-15 {
     height: 15vh
