@@ -11,11 +11,17 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+window.onload = async () => {
+    // addRandomGreeting();
+    getComments();
+}
+
 
 /**
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
+  console.log("runningskjldfnk")
   const greetings =
       ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
 
@@ -23,6 +29,12 @@ function addRandomGreeting() {
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
+  const greetingContainer = document.getElementById('commentsContainer');
   greetingContainer.innerText = greeting;
+}
+
+async function getComments() {
+  const response = await fetch('/data');
+  const quote = await response.text();
+  document.getElementById('commentsContainer').innerText = quote;
 }

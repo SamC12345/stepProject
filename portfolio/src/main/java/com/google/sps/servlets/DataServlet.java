@@ -29,4 +29,29 @@ public class DataServlet extends HttpServlet {
     response.setContentType("text/html;");
     response.getWriter().println("<h1>Hello world!</h1>");
   }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    // Get the input from the form.
+    String text = getParameter(request, "commentText", "default");
+    System.out.println(text);
+
+    // Respond with the result.
+    response.setContentType("text/html;");
+    response.getWriter().println(text);
+  }
+
+
+    /**
+   * @return the request parameter, or the default value if the parameter
+   *         was not specified by the client
+   */
+  private String getParameter(HttpServletRequest request, String name, String defaultValue) {
+    String value = request.getParameter(name);
+    if (value == null) {
+      return defaultValue;
+    }
+    return value;
+  }
 }
+  
