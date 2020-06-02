@@ -19,39 +19,46 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Iterator;
+
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
 
+    private ArrayList<String> comments= new ArrayList<String>();
+
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
+    response.getWriter().println(getAllComments());
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
-    String text = getParameter(request, "commentText", "default");
-    System.out.println(text);
+    String comment = getParameter(request, "commentText", "default");
+    comments.add(comment);
 
     // Respond with the result.
     response.setContentType("text/html;");
-    response.getWriter().println(text);
+    response.getWriter().println(comment);
   }
 
 
-    /**
-   * @return the request parameter, or the default value if the parameter
-   *         was not specified by the client
-   */
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
     if (value == null) {
       return defaultValue;
     }
     return value;
+  }
+
+  private String getAllComments(){
+      String commentString=String.join(" ", comments);
+      return commentString;
   }
 }
   
