@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Iterator;
+import com.google.gson.Gson;
 
 
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
@@ -33,7 +34,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     response.setContentType("text/html;");
-    response.getWriter().println(getAllComments());
+    response.getWriter().println(convertCommentsToJson(getAllComments()));
   }
 
   @Override
@@ -56,9 +57,14 @@ public class DataServlet extends HttpServlet {
     return value;
   }
 
-  private String getAllComments(){
-      String commentString=String.join(" ", comments);
-      return commentString;
+  private ArrayList<String> getAllComments(){
+      return comments;
+  }
+
+  private String convertCommentsToJson(ArrayList<String> comments) {
+    Gson gson = new Gson();
+    String json = gson.toJson(comments);
+    return json;
   }
 }
   

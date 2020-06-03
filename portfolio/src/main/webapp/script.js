@@ -18,8 +18,25 @@ window.onload = async () => {
 
 const getComments = async () => {
     const response = await fetch('/data');
-    const quote = await response.text();
-    document.getElementById('commentsContainer').innerText = quote;
+    const comments = JSON.parse(await response.text());
+    const paraList= comments.map((comment)=>{
+        const paragraph = document.createElement("P");
+        paragraph.innerText=comment;
+        paragraph.className="comment"
+        return paragraph;
+    });
+    const divList = paraList.map((para)=>{
+        const div = document.createElement("DIV");
+        div.appendChild(para);
+        div.className="commentDiv py-2 px-4";
+        return div;
+    });
+    const commentsContainer = document.getElementById("commentsContainer");
+    commentsContainer.innerHTML='';
+    divList.forEach((div)=>{
+        commentsContainer.appendChild(div);
+    });
+    console.log(divList);
 }
 
 
