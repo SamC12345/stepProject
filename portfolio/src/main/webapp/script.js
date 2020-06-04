@@ -17,18 +17,22 @@ window.onload = async () => {
 }
 
 const getComments = async () => {
-    const response = await fetch('/data');
+    const response = await fetch('/comment');
     const comments = JSON.parse(await response.text());
-    const paraList= comments.map((comment)=>{
-        const paragraph = document.createElement("P");
-        paragraph.innerText=comment;
-        paragraph.className="comment"
-        return paragraph;
+    const pTagList= comments.map((comment)=>{
+        const commentText = document.createElement("P");
+        commentText.innerText=comment.commentText;
+        commentText.className="comment"
+        const timestamp = document.createElement("P");
+        timestamp.innerText=convertUTCToString(comment.timestamp);
+        timestamp.className="timestamp"
+        return {commentText, timestamp};
     });
-    const divList = paraList.map((para)=>{
+    const divList = pTagList.map((ptags)=>{
         const div = document.createElement("DIV");
-        div.appendChild(para);
-        div.className="commentDiv py-2 px-4";
+        div.className="commentDiv py-2 px-4 d-flex justify-content-between";
+        div.appendChild(ptags.commentText);
+        div.appendChild(ptags.timestamp);
         return div;
     });
     const commentsContainer = document.getElementById("commentsContainer");
@@ -36,13 +40,12 @@ const getComments = async () => {
     divList.forEach((div)=>{
         commentsContainer.appendChild(div);
     });
-    console.log(divList);
 }
 
 
 const addComment = async (event) => {
     event.preventDefault();
-    await fetch('/data', {
+    await fetch('/comment', {
         method: 'post',
         body: new URLSearchParams({ "commentText": document.getElementById('commentText').value })
     });
@@ -50,6 +53,15 @@ const addComment = async (event) => {
     getComments();
 }
 
-function attachCommentFormSubmitEvent() {
+const attachCommentFormSubmitEvent = () => {
     document.getElementById("addCommentForm").addEventListener("submit", addComment);
+}
+
+const convertUTCToString = (utc) => {
+    const date = new Date(utc);
+    return date.getHours() + ":"  
+        + date.getMinutes() + " "
+        + date.getDate() + "/"
+        + (date.getMonth()+1)  + "/" 
+        + date.getFullYear();
 }

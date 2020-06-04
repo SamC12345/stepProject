@@ -20,34 +20,38 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.Map;
-import java.util.Iterator;
-import com.google.gson.Gson;
+import com.google.sps.servlets.Comment;
+import com.google.sps.servlets.CommentDAO;
+import com.google.sps.servlets.CommentUtils;
 
+@WebServlet("/comment")
+public class CommentServlet extends HttpServlet {
 
-/** Servlet that returns some example content. TODO: modify this file to handle comments data */
-@WebServlet("/data")
-public class DataServlet extends HttpServlet {
-
-    private ArrayList<String> comments= new ArrayList<String>();
+  private CommentDAO commentDAO = new CommentDAO();
+  private CommentUtils commentUtils = new CommentUtils();
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    response.setContentType("text/html;");
-    response.getWriter().println(convertCommentsToJson(getAllComments()));
+    ArrayList<Comment> commentList = commentDAO.getAllComments();
+    String commentJSON = commentUtils.convertCommentsToJson(commentList);
+    respondWithString(response, commentJSON);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    // Get the input from the form.
-    String comment = getParameter(request, "commentText", "default");
-    comments.add(comment);
-
-    // Respond with the result.
-    response.setContentType("text/html;");
-    response.getWriter().println(comment);
+    Comment comment = getCommentFromRequest(request);
+    commentDAO.addComment(comment);
+    respondWithString(response, comment.getCommentText());
   }
 
+  //------------------------------------------------------------------------------------------------------
+  //UTILITY FUNCTIONS
+  //------------------------------------------------------------------------------------------------------
+  
+  private Comment getCommentFromRequest(HttpServletRequest request){
+    String commentText = getParameter(request, "commentText", "An Error Occurred: commentText not found");
+    return new Comment(commentText);
+  }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {
     String value = request.getParameter(name);
@@ -57,14 +61,9 @@ public class DataServlet extends HttpServlet {
     return value;
   }
 
-  private ArrayList<String> getAllComments(){
-      return comments;
-  }
-
-  private String convertCommentsToJson(ArrayList<String> comments) {
-    Gson gson = new Gson();
-    String json = gson.toJson(comments);
-    return json;
+  private void respondWithString(HttpServletResponse response, String message) throws IOException {
+    response.setContentType("text/html;");
+    response.getWriter().println(message);
   }
 }
   
