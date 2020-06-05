@@ -13,11 +13,12 @@
 // limitations under the License.
 window.onload = async () => {
     getComments();
-    attachCommentFormSubmitEvent();
+    addEventListeners();
 }
 
 const getComments = async () => {
-    const response = await fetch('/comment');
+    const commentLimit= getCommentLimit();
+    const response = await fetch(`/comment?commentLimit=${commentLimit}`);
     const comments = JSON.parse(await response.text());
     const pTagList= comments.map((comment)=>{
         const commentText = document.createElement("P");
@@ -42,6 +43,15 @@ const getComments = async () => {
     });
 }
 
+const getCommentLimit = () => {
+    const limit = document.getElementById('setCommentLimitSelect').value;
+    if (limit === "No Limit"){
+        return "0";
+    } else {
+        return limit;
+    }
+
+};
 
 const addComment = async (event) => {
     event.preventDefault();
@@ -53,8 +63,19 @@ const addComment = async (event) => {
     getComments();
 }
 
-const attachCommentFormSubmitEvent = () => {
+const deleteComments = async (event) => {
+    event.preventDefault();
+    await fetch('/comment', {
+        method: 'delete'
+    });
+
+    getComments();
+}
+
+const addEventListeners = () => {
     document.getElementById("addCommentForm").addEventListener("submit", addComment);
+    document.getElementById("setCommentLimitForm").addEventListener("change", getComments);
+    document.getElementById("deleteCommentsForm").addEventListener("submit", deleteComments);
 }
 
 const convertUTCToString = (utc) => {

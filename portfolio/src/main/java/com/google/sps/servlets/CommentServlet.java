@@ -32,7 +32,8 @@ public class CommentServlet extends HttpServlet {
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-    ArrayList<Comment> commentList = commentDAO.getAllComments();
+    long commentLimit = getCommentLimitFromRequest(request);
+    ArrayList<Comment> commentList = commentDAO.getComments(commentLimit);
     String commentJSON = commentUtils.convertCommentsToJson(commentList);
     respondWithString(response, commentJSON);
   }
@@ -44,6 +45,12 @@ public class CommentServlet extends HttpServlet {
     respondWithString(response, comment.getCommentText());
   }
 
+  @Override
+  public void doDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    commentDAO.deleteComments();
+    respondWithString(response, "All Comments Deleted!");
+  }
+
   //------------------------------------------------------------------------------------------------------
   //UTILITY FUNCTIONS
   //------------------------------------------------------------------------------------------------------
@@ -51,6 +58,11 @@ public class CommentServlet extends HttpServlet {
   private Comment getCommentFromRequest(HttpServletRequest request){
     String commentText = getParameter(request, "commentText", "An Error Occurred: commentText not found");
     return new Comment(commentText);
+  }
+
+  private long getCommentLimitFromRequest(HttpServletRequest request){
+    String commentLimit = getParameter(request, "commentLimit", "0");
+    return Long.valueOf(commentLimit);
   }
 
   private String getParameter(HttpServletRequest request, String name, String defaultValue) {

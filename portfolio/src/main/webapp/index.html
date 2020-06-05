@@ -245,6 +245,31 @@
                             </form>
                         </div>
                     </div>
+                    <div class="row my-2">
+                        <div class="col h-100">
+                            <div class="d-flex justify-content-between">
+                                <div class="d-flex">
+                                    <p class="mr-3 my-auto"> Comment Limit:</p>
+                                    <div>
+                                        <form id="setCommentLimitForm">
+                                            <select id="setCommentLimitSelect" class="custom-select">
+                                                <option>5</option>
+                                                <option>10</option>
+                                                <option>25</option>
+                                                <option>No Limit</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <p class="m-0">Delete All Comments: </p>
+                                    <form id="deleteCommentsForm">
+                                        <button type="submit" id="deleteCommentsButton" class=" ml-1 btn btn-primary"><i class="fas fa-trash"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div id="commentsContainer" class="commentGallery">
                     </div>
                 </div>
