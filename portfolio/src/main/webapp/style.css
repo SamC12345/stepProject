@@ -54,6 +54,37 @@
     scroll-snap-align: center;
 }
 
+.commentGallery{
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    align-items: center;
+    height: 80%;
+}
+
+.commentDiv {
+    margin: 10px;
+    position: relative;
+    width: 90%;
+    border-radius: 10px;
+    scroll-snap-align: center;
+    border: #202227;
+    border-style: solid;
+    background: #5e6472
+}
+
+.comment {
+    word-wrap: break-word;
+    color: #02dcff
+}
+
+.timestamp {
+    color: #02dcff
+}
+
+
 html {
   scroll-behavior: smooth;
 }

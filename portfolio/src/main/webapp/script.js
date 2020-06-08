@@ -11,18 +11,78 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+window.onload = async () => {
+    getComments();
+    addEventListeners();
+}
 
-/**
- * Adds a random greeting to the page.
- */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+const getComments = async () => {
+    const commentLimit= getCommentLimit();
+    const response = await fetch(`/comment?commentLimit=${commentLimit}`);
+    const comments = JSON.parse(await response.text());
+    const pTagList= comments.map((comment)=>{
+        const commentText = document.createElement("P");
+        commentText.innerText=comment.commentText;
+        commentText.className="comment"
+        const timestamp = document.createElement("P");
+        timestamp.innerText=convertUTCToString(comment.timestamp);
+        timestamp.className="timestamp"
+        return {commentText, timestamp};
+    });
+    const divList = pTagList.map((ptags)=>{
+        const div = document.createElement("DIV");
+        div.className="commentDiv py-2 px-4 d-flex justify-content-between";
+        div.appendChild(ptags.commentText);
+        div.appendChild(ptags.timestamp);
+        return div;
+    });
+    const commentsContainer = document.getElementById("commentsContainer");
+    commentsContainer.innerHTML='';
+    divList.forEach((div)=>{
+        commentsContainer.appendChild(div);
+    });
+}
 
-  // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+const getCommentLimit = () => {
+    const limit = document.getElementById('setCommentLimitSelect').value;
+    if (limit === "No Limit"){
+        return "0";
+    } else {
+        return limit;
+    }
 
-  // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+};
+
+const addComment = async (event) => {
+    event.preventDefault();
+    await fetch('/comment', {
+        method: 'post',
+        body: new URLSearchParams({ "commentText": document.getElementById('commentText').value })
+    });
+
+    getComments();
+}
+
+const deleteComments = async (event) => {
+    event.preventDefault();
+    await fetch('/comment', {
+        method: 'delete'
+    });
+
+    getComments();
+}
+
+const addEventListeners = () => {
+    document.getElementById("addCommentForm").addEventListener("submit", addComment);
+    document.getElementById("setCommentLimitForm").addEventListener("change", getComments);
+    document.getElementById("deleteCommentsForm").addEventListener("submit", deleteComments);
+}
+
+const convertUTCToString = (utc) => {
+    const date = new Date(utc);
+    return date.getHours() + ":"  
+        + date.getMinutes() + " "
+        + date.getDate() + "/"
+        + (date.getMonth()+1)  + "/" 
+        + date.getFullYear();
 }
